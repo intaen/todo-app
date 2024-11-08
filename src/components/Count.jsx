@@ -1,20 +1,15 @@
-import { useState } from 'react'
-import '/src/components/Count.css'
+import React, { useState } from 'react'
 
-function Count() {
-    const [count, setCount] = useState(0)
+// untuk mempermudah kirim data antara component (spy tidak props drilling), bisa dengan component management menggunakan salah satunya redux.
+function Count({count}) {
 
-    return (
-        <>
-    <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/Count.jsx</code> and save to test HMR
-        </p>
+  const colorEven  = count % 2 === 0 ? {color: 'red'} :
+  {color: 'blue'}
+
+    return (   
+      <div>
+        <h2 style={colorEven}>{count}</h2>
       </div>
-    </>
     )
 }       
 
