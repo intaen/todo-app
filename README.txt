@@ -1,0 +1,6 @@
+-npm create vite@latest
+-Need to install the following packages: y
+-Project name: {input project name}
+-Choose language: React + JavaScript
+-Install apps: npm i
+-Running apps: npm run dev
