@@ -8,7 +8,7 @@ export default function TodoItem({todo, toggleTodo, deleteTodo}) {
                 className='todoList ${todo.completed ? completed ? "completed" : ""}'
                 onClick={() => toggleTodo(todo.id)}
             >
-                {todo.answer} {/* munculin result dari handleQuestion */}
+                {todo.title} {/* munculin result dari handleQuestion */}
             </span>
             <button className='deleteButton' onClick={() => deleteTodo(todo.id)}>Not Relevant</button>
         </li>
