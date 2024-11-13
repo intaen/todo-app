@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login({onSwitchRegister}) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
     const navigate = useNavigate();
+    const {login} = useContext(AuthContext)
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
 
-        setTimeout(() => {
-            navigate('/');
-        }, 0)
+        const result = await login(email, password);
+        console.log("RESULT LOGIN", result)
+        if (result.success) {
+            navigate('/home');
+        }  else {
+            alert("Email/Password salah");
+        }
     }
 
     return (

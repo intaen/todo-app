@@ -1,13 +1,13 @@
 
 import './App.css'
-import Header from './components/Header.jsx'
 import { Outlet } from 'react-router-dom'
+import HeaderLogout from './components/HeaderLogout.jsx'
 
 
 function App() {
   return (
     <div>
-      <Header/>
+      <HeaderLogout/>
       <Outlet/>
     </div>
   )

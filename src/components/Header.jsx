@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 export default function Header() {
     const navigate = useNavigate();
 
-    const handleLogout = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
 
         setTimeout(() => {
@@ -14,8 +14,8 @@ export default function Header() {
     }
 
     return (
-        <form className="header" onSubmit={handleLogout}>
-            <button type='submit' className="logout-button">Logout</button>
+        <form className="header" onSubmit={handleLogin}>
+            <button type='submit' className="login-button">Login</button>
         </form>
     );
 }

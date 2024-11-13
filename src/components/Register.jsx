@@ -12,7 +12,7 @@ export default function Register({onSwitchLogin}) {
         e.preventDefault();
 
         setTimeout(() => {
-            navigate('/');
+            navigate('/login');
         }, 0)
     }
 

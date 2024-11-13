@@ -4,3 +4,4 @@
 -Choose language: React + JavaScript
 -Install apps: npm i
 -Running apps: npm run dev
+-Install react, react router, reduxjs toolkit, redux, json server

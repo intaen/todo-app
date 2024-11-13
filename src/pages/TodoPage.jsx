@@ -1,44 +1,34 @@
 import React, { useEffect, useState} from 'react'
 import TodoForm from '../components/TodoForm'
 import TodoList from '../components/TodoList'
-import fetchTodos from '../services/TodoService'
+import { useDispatch, useSelector } from 'react-redux'
+import { addAnswerThunk, deleteAnswerThunk, fetchAnswersThunk, toggleAnswerThunk } from '../redux/slices/todoSlice'
 
 export default function TodoPage() {
-    const [todos, setTodos] = useState([])
+    const dispatch = useDispatch();
+    const {items: todos} = useSelector(state => state.todos);
 
     useEffect (() => { // use effect dijalankan supaya jika ada perubahan lgsg jalan
-        const fetch = async () => {
-            const t = await fetchTodos();
-            setTodos(t)
-        }
-        
-        fetch()
+        dispatch(fetchAnswersThunk());
       }, []); // dependency / trigger diisi jika ingin ter-render ulang ketika terjadi perubahan, lempar value ke sini
 
-    const handleAnswer = (title) => {
-        const newTodo = {
-            id: todos.length ? todos[todos.length - 1].id + 1 : 1,
-            title, // hardcode title: {data hardcode} buat munculin result
-            completed: false
-        }
-
-        setTodos([...todos, newTodo])
+    const handleAnswerTodo = async (title) => {
+        dispatch(addAnswerThunk(title));
     }
 
-    const handleToggleTodo = (id) => {
-        setTodos(todos.map(todo => (
-            todo.id === id ? {...todo, completed: !todo.completed} : todo
-        )))
+    const handleToggleTodo = async (id) => {
+        const ansToUpdate = todos.find(todo => todo.id === id);
+        dispatch(toggleAnswerThunk({id, completed: !ansToUpdate.completed}));
     }
 
-    const handleDeleteTodo = (id) => {
-        setTodos(todos.filter(todo => todo.id !== id))
+    const handleDeleteTodo = async (id) => {
+        dispatch(deleteAnswerThunk(id));
     }
 
     return(
         <div className='container'>
             <h2 className='header'>Google</h2>
-            <TodoForm askTodo={handleAnswer}/>
+            <TodoForm askTodo={handleAnswerTodo}/>
             <TodoList todos={todos} toggleTodo={handleToggleTodo} deleteTodo={handleDeleteTodo}/>
         </div>
     )

@@ -1,11 +1,19 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Login from "../components/Login";
 import Register from "../components/Register";
-import TodoPage from "./TodoPage";
+import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export default function AuthPage() {
     const [isLoginView, setIsLoginView] = useState(true);
+    const navigate = useNavigate();
+    const {isAuthenticated} = useContext(AuthContext)
+    
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/home')
+        }
+    }, [isAuthenticated])
 
     return (
         <div className="auth_container">
