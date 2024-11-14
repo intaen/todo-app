@@ -1,2 +1,3 @@
 # todo-app
-## How to run: npm run dev then open in browser
+## How to run:
+### npm run dev
