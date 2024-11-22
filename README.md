@@ -1,3 +1,3 @@
-# todo-app
+# todo-app (React JS)
 ## How to run:
 ### npm run dev
